@@ -1,0 +1,75 @@
+---
+title: 'Assignment 3: Incarceration'
+author: "Emm Ocampo"
+date: "2/25/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library("tidyverse")
+library("knitr")
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+knitr::opts_knit$set(root.dir = "../source")
+options(scipen = 999)
+```
+```{r, echo = FALSE, include = FALSE}
+source("analysis.R")
+```
+
+## Introduction
+While everyone knows that the number of people behind bars in the U.S. the greater than anywhere in the world,
+Some do not know just how unfair that distribution of people is. What I mean by distribution is the number of
+people behind bars for a specific race/group of people versus their representative percent of the overall
+population. For example, if `imaginary group 1` makes up 20% of the U.S. population, we should expect that 
+`imaginary group 1` make up about 20% of the prison population. Unfortunately, real world data is not so fair. 
+Black people are laughably discriminated against in our prison system and make up a much larger percentage
+of the prison population than they should. Oddly, however, women are disproportionately underrepresented in our
+prison system.
+
+## Summary Information
+For this report, I used data retrieve from the **Vera Institute of Justice**, a data file containing prison 
+and jail information that goes from 1970 all the way until 2018. Unfortunately, the prison data from 2017 and 
+2018 is incomplete, so I will not use it in this report. To start things off, in our earliest available year, 
+we had a female proportion of about `r female_min_year`% and the most recent date has a `r female_max_year`% proportion
+of females in prison. This is a difference of `r diff_prop`. `r female_max_prop`, the year with the highest female
+prison population, had about `r female_max_pop` women behind bars. By contrast, `r male_max_pop_year`, the year with
+the highest male prison population, had a proportion of `r male_max_pop_prop`% and a population of `r male_max_pop`.
+
+
+## Trends Over Time Chart
+```{r, echo = FALSE}
+plot(chart_one)
+```
+
+My first chart tracks the number of prisoners in our justice system by each year. Four variables are tracked 
+here, the first two are the number of Black males and White males that greatly increase in number shortly 
+after 1990. The problem with these two lines is that Black males surpass White males. Going back to my 
+`imaginary group 1` analogy, one could argue that Black males are simply more violent than White males, 
+and therefore they are jailed more, the same way that females are underrepresented in the prisoner population
+than males. However, I would argue that men are more similar to each other in terms of aggression than women.
+That is why there are more White women in prison than there are Black women. The problem lies with who people
+police Black people.
+
+
+## Variable Comparison Chart  
+```{r, echo = FALSE}
+plot(graph_two)
+```
+
+My second chart shows this problem with policing more clearly. Black and White people make up wildly
+different percentages in the overall population, as shown with the red bar. However, they make up roughly
+similar percentages in the over all prisoner population! With this graph we can clearly see the injustice of 
+our policing system at work. We systematically lock up Black people at an incredibly higher rate than White
+people.
+
+## Map 
+```{r, echo = FALSE}
+plot(female_prison_population)
+```
+
+Lastly, this map shows the breakdown of women in jail according to state in 2016. Something to note 
+is the overall low number of women in prison regardless of state. While it would be expected that the highest
+populated states also have the highest number of women in prison, that isn't exactly the case either. The only
+state that seemingly pushes for accountability in women's actions is Texas. It seems like most states do not
+ferocity in conviction toward women that they do toward men.
+
